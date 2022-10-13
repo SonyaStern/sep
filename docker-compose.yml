@@ -1,0 +1,13 @@
+version: '3.6'
+
+services:
+  database:
+    image: 'postgres:13.1-alpine'
+    container_name: db
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=sep
+      - POSTGRES_USER=sep
+      - POSTGRES_DB=sep
+    ports:
+      - '5432:5432'

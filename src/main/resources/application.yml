@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: sep
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sep
+    driver-class-name: org.postgresql.Driver
+    username: sep
+    password: sep
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+    show-sql: true
+
+
+hibernate:
+  format_sql: true
+  jdbc:
+    time_zone: UTC
+
+
+logging:
+  level:
+    com.kth: DEBUG
