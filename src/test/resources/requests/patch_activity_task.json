@@ -1,0 +1,12 @@
+{
+  "requestId": 2,
+  "createDate": "2022-07-03T01:18:54Z",
+  "lastUpdateDate": "2022-09-01T01:18:54Z",
+  "status": "IN_PROGRESS",
+  "plannedStartDate": "2022-10-03T09:00:00Z",
+  "plannedEndDate": "2022-10-03T18:00:00Z",
+  "clientNeeds": "10 cases of dark beer",
+  "plan": "TBD",
+  "department": "Management",
+  "comment": "No comments"
+}
