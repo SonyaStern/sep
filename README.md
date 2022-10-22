@@ -5,3 +5,4 @@ Tech stack:
 - Java 17
 
 To start the SPE app, run docker-compose up from the project location.
+VM options: -Dspring.profiles.active=dev
