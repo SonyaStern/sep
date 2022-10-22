@@ -33,10 +33,9 @@ public class ModelConvertor {
 
     public Employee enrichEmployeeEntity(Employee employee, EmployeeDto employeeDto) {
         return employee
-                .setEmployeeId(employeeDto.getEmployeeId())
                 .setFirstName(employeeDto.getFirstName())
                 .setLastName(employeeDto.getLastName())
-                .setEmail(employeeDto.getDepartment())
+                .setEmail(employeeDto.getEmail())
                 .setDepartment(employeeDto.getDepartment())
                 .setPosition(employeeDto.getPosition());
     }

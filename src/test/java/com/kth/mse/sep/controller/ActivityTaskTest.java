@@ -45,7 +45,7 @@ class ActivityTaskTest {
         var actualJson = response.getResponse().getContentAsString();
 
         JSONAssert.assertEquals("Activity task response didn't match",
-                expectedJson, actualJson, JSONCompareMode.NON_EXTENSIBLE);
+                expectedJson, actualJson, JSONCompareMode.LENIENT);
     }
 
 
@@ -60,7 +60,7 @@ class ActivityTaskTest {
         var actualJson = response.getResponse().getContentAsString();
 
         JSONAssert.assertEquals("Activity task response didn't match",
-                expectedJson, actualJson, JSONCompareMode.NON_EXTENSIBLE);
+                expectedJson, actualJson, JSONCompareMode.LENIENT);
     }
 
     @Test
@@ -76,7 +76,7 @@ class ActivityTaskTest {
 
     @Test
     @Sql({"classpath:scripts/insert_activity_task.sql"})
-    void patchClient() throws Exception {
+    void patchActivity() throws Exception {
         String requestBody = loadResourceAsString("requests/patch_activity_task.json");
         String expectedJson = loadResourceAsString("responses/patch_activity_task.json");
 
@@ -88,6 +88,6 @@ class ActivityTaskTest {
         var actualJson = response.getResponse().getContentAsString();
 
         JSONAssert.assertEquals("Activity task response didn't match",
-                expectedJson, actualJson, JSONCompareMode.NON_EXTENSIBLE);
+                expectedJson, actualJson, JSONCompareMode.LENIENT);
     }
 }
