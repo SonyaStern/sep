@@ -1,0 +1,2 @@
+insert into client (client_id, first_name, last_name, email, phone_number, address) values (1, 'Alex', 'Black', 'ABlack@gmail.com', '+55758934564', 'Mexico City'),
+                                                                                              (2, 'Andre', 'Sapolsky', 'ASapolsky@gmail.com', '+10758934564', 'NY');

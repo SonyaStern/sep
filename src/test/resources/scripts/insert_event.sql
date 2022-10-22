@@ -1,0 +1,2 @@
+insert into event (request_id, create_date, last_update_date, status, event_date, address, client_id, financial_feedback) values (1, '2020-08-03T01:18:54.000+00:00', '2020-08-03T01:18:54.000+00:00', 'OPEN', '2023-08-03T01:18:54.000+00:00', 'Moscow', 1, 'Reasonable'),
+                                                                                                                                 (2, '2020-08-03T01:18:54.000+00:00', '2020-08-03T01:18:54.000+00:00', 'OPEN', '2023-08-03T01:18:54.000+00:00', 'SPb', 2, 'Reasonable');

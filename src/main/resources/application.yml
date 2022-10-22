@@ -3,17 +3,17 @@ spring:
     name: sep
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/sep
-    driver-class-name: org.postgresql.Driver
-    username: sep
-    password: sep
+    url: ${database-url}
+#    driver-class-name: org.postgresql.Driver
+    username: ${database-username}
+    password: ${database-password}
 
   jpa:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop
     open-in-view: false
     show-sql: true
 
@@ -27,3 +27,14 @@ hibernate:
 logging:
   level:
     com.kth: DEBUG
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+
+database-url: jdbc:postgresql://localhost:5432/sep
+database-username: sep
+database-password: sep
