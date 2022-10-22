@@ -1,6 +1,7 @@
 package com.kth.mse.sep;
 
 
+import com.kth.mse.sep.config.SepSecurityConfig;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;

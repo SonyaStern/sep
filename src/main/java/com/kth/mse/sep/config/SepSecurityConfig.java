@@ -1,4 +1,4 @@
-package com.kth.mse.sep;
+package com.kth.mse.sep.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -68,7 +68,7 @@ class EventControllerTest {
 
     @Test
     @Sql({"classpath:scripts/insert_client.sql", "classpath:scripts/insert_event.sql"})
-    void getEmployeeById() throws Exception {
+    void getEventById() throws Exception {
         String expectedJson = loadResourceAsString("responses/get_event.json");
 
         var response = mvc.perform(get("/events/{eventId}", 1L))

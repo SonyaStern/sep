@@ -1,5 +1,7 @@
 package com.kth.mse.sep.controller;
 
+import com.kth.mse.sep.converter.ModelConvertor;
+import com.kth.mse.sep.dto.EventDto;
 import com.kth.mse.sep.model.Event;
 import com.kth.mse.sep.repository.EventRepository;
 import java.util.Optional;
@@ -21,33 +23,25 @@ public class EventController {
 
     private final EventRepository eventRepository;
 
+    private final ModelConvertor convertor;
+
     @GetMapping("/{eventId}")
-    public Event getEventById(@PathVariable("eventId") Long eventId) {
-        return eventRepository.findById(eventId)
-                .orElse(null);
+    public EventDto getEventById(@PathVariable("eventId") Long eventId) {
+        Optional<Event> event = eventRepository.findById(eventId);
+        return event.map(convertor::convertEventEntityToDto).orElse(null);
     }
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    public Event createEvent(@RequestBody Event event) {
-        return eventRepository.save(event);
+    public EventDto createEvent(@RequestBody EventDto event) {
+        Event eventToCreate = eventRepository.save(convertor.convertEventDtoToEntity(event));
+        return convertor.convertEventEntityToDto(eventToCreate);
     }
 
     @PatchMapping("/{eventId}")
-    public Event patchEvent(@PathVariable("eventId") Long eventId, @RequestBody Event event) {
+    public EventDto patchEvent(@PathVariable("eventId") Long eventId, @RequestBody EventDto event) {
         Optional<Event> eventToUpdate = eventRepository.findById(eventId);
-        if (eventToUpdate.isPresent()) {
-            Event updatedEvent = eventToUpdate.get()
-                    .setEventDate(event.getEventDate())
-                    .setAddress(event.getAddress())
-                    .setClient(event.getClient())
-                    .setFinancialFeedback(event.getFinancialFeedback());
-            updatedEvent.setCreateDate(event.getCreateDate())
-                    .setLastUpdateDate(event.getLastUpdateDate())
-                    .setStatus(event.getStatus());
-            return eventRepository.save(updatedEvent);
-        }
-        return null;
+        return eventToUpdate.map(value -> convertor.convertEventEntityToDto(eventRepository.save(convertor.enrichEventEntity(value, event)))).orElse(null);
     }
 }
 
