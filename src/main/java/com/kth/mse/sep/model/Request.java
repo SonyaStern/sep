@@ -1,15 +1,10 @@
 package com.kth.mse.sep.model;
 
-import java.sql.Timestamp;
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
 import lombok.Data;
 import lombok.experimental.Accessors;
+
+import javax.persistence.*;
+import java.sql.Timestamp;
 
 @MappedSuperclass
 @Data

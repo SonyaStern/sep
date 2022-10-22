@@ -1,4 +1,4 @@
-package com.kth.mse.sep;
+package com.kth.mse.sep.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

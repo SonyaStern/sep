@@ -1,5 +1,7 @@
 package com.kth.mse.sep.controller;
 
+import com.kth.mse.sep.converter.ModelConvertor;
+import com.kth.mse.sep.dto.EmployeeDto;
 import com.kth.mse.sep.model.Employee;
 import com.kth.mse.sep.repository.EmployeeRepository;
 import java.util.Optional;
@@ -21,31 +23,26 @@ public class EmployeeController {
 
     private final EmployeeRepository employeeRepository;
 
+    private final ModelConvertor convertor;
+
     @GetMapping("/{employeeId}")
-    public Employee getEmployeeById(@PathVariable("employeeId") Long employeeId) {
-        return employeeRepository.findById(employeeId)
-                .orElse(null);
+    public EmployeeDto getEmployeeById(@PathVariable("employeeId") Long employeeId) {
+        Optional<Employee> employee = employeeRepository.findById(employeeId);
+        return employee.map(convertor::convertEmployeeEntityToDto).orElse(null);
     }
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    public Employee createEmployee(@RequestBody Employee employee) {
-        return employeeRepository.save(employee);
+    public EmployeeDto createEmployee(@RequestBody EmployeeDto employee) {
+        Employee effectiveEmployee = employeeRepository.save(convertor.convertEmployeeDtoToEntity(employee));
+        return convertor.convertEmployeeEntityToDto(effectiveEmployee);
     }
 
     @PatchMapping("/{employeeId}")
-    public Employee patchEmployee(@PathVariable("employeeId") Long employeeId,
-                                  @RequestBody Employee employee) {
+    public EmployeeDto patchEmployee(@PathVariable("employeeId") Long employeeId,
+                                  @RequestBody EmployeeDto employee) {
         Optional<Employee> employeeToUpdate = employeeRepository.findById(employeeId);
-        if (employeeToUpdate.isPresent()) {
-            Employee updatedEmployee = employeeToUpdate.get()
-                    .setFirstName(employee.getFirstName())
-                    .setLastName(employee.getLastName())
-                    .setEmail(employee.getEmail())
-                    .setDepartment(employee.getDepartment())
-                    .setPosition(employee.getPosition());
-            return employeeRepository.save(updatedEmployee);
-        }
-        return null;
+            return employeeToUpdate.map(eml ->
+                    convertor.convertEmployeeEntityToDto(employeeRepository.save(convertor.enrichEmployeeEntity(eml, employee)))).orElse(null);
     }
 }

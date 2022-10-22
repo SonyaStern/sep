@@ -3,14 +3,16 @@ package com.kth.mse.sep.model;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.sql.Timestamp;
 
 @Entity
 @Table(name = "activity")
 @Data
 @Accessors(chain = true)
-public class ActivityTask extends Request{
+public class ActivityTask extends Request {
 
     @Column(name = "start_date")
     private Timestamp plannedStartDate;
