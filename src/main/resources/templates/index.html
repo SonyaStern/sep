@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>SEP</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+<body>
+    <div class="container">
+        <section class="hero is-primary">
+            <div class="hero-body">
+                <p class="title">
+                    SEP
+                </p>
+                <p class="subtitle">
+                    Logged in as: <span sec:authentication="name">TEST</span>
+                </p>
+            </div>
+        </section>
+        <section class="mt-4">
+            <div class="tabs is-centered">
+                <ul>
+                    <li class="is-active"><a href="/">Home</a></li>
+                    <li class=""><a sec:authorize="hasRole('SEE_EVENTS')" href="/events">Events</a></li>
+                    <li class=""><a sec:authorize="hasRole('CREATE_EVENTS')" href="/events/create">New Event</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mt-6">
+            This is your home page.<br>
+            <a href="/login">Logout</a>
+        </section>
+
+    </div>
+
+</body>
+</html>

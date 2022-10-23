@@ -57,35 +57,31 @@ public class SepSecurityConfig {
 
     @Bean
     public InMemoryUserDetailsManager userDetailsService() {
-        UserDetails am = User.withUsername("am")
-            .password(passwordEncoder().encode("amPassword"))
-            .roles("AM")
+        UserDetails u1 = User.withUsername("Mike")
+            .password(passwordEncoder().encode("password"))
+            .roles("SEE_EVENTS")
             .build();
-        UserDetails fm = User.withUsername("fm")
-            .password(passwordEncoder().encode("fmPassword"))
-            .roles("FM")
-            .build();
-        UserDetails pm = User.withUsername("pm")
-            .password(passwordEncoder().encode("pmPassword"))
-            .roles("PM")
-            .build();
-        UserDetails sm = User.withUsername("sm")
-            .password(passwordEncoder().encode("smPassword"))
-            .roles("SM")
-            .build();
-        UserDetails csm = User.withUsername("csm")
-            .password(passwordEncoder().encode("csmPassword"))
-            .roles("CSM")
-            .build();
-        UserDetails scsm = User.withUsername("scsm")
-            .password(passwordEncoder().encode("scsmPassword"))
-            .roles("SCSM")
-            .build();
-        UserDetails staff = User.withUsername("staff")
-            .password(passwordEncoder().encode("staffPassword"))
-            .roles("STAFF")
-            .build();
-        return new InMemoryUserDetailsManager(am, fm, pm, sm, csm, scsm, staff);
+        UserDetails u2 = User.withUsername("Janet")
+                .password(passwordEncoder().encode("password"))
+                .roles("SEE_EVENTS", "CREATE_EVENTS")
+                .build();
+        UserDetails u3 = User.withUsername("Jack")
+                .password(passwordEncoder().encode("password"))
+                .roles("SEE_EVENTS")
+                .build();
+        UserDetails u4 = User.withUsername("Natalie")
+                .password(passwordEncoder().encode("password"))
+                .roles("SEE_EVENTS")
+                .build();
+        UserDetails u5 = User.withUsername("Sarah")
+                .password(passwordEncoder().encode("password"))
+                .roles("SEE_EVENTS", "CREATE_EVENTS")
+                .build();
+        UserDetails u6 = User.withUsername("Judy")
+                .password(passwordEncoder().encode("password"))
+                .roles("SEE_EVENTS", "CREATE_EVENTS")
+                .build();
+        return new InMemoryUserDetailsManager(u1, u2, u3, u4, u5, u6);
     }
 
     @Bean

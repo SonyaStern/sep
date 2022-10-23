@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class WebController {
 
     @RequestMapping("/")
-    @ResponseBody
     public String index() {
-        return "This is an example!";
+        return "index.html";
     }
 
 }
